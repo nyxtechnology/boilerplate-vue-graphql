@@ -1,0 +1,43 @@
+version: "3"
+
+services:
+  front:
+    image: wodby/node
+    env_file: .env
+    container_name: front
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    restart: unless-stopped
+    command: npm run start
+    labels:
+      - 'traefik.port=5000'
+      - 'traefik.enable=true'
+      - 'traefik.backend=front'
+      - 'traefik.frontend.priority=10'
+      - 'traefik.docker.network=nyx'
+      - 'traefik.frontend.rule=Host:$TRAEFIK_FRONTEND_HOST'
+      - 'traefik.frontend.rule=PathPrefixStrip:/, /dist/'
+    networks:
+      - nyx
+
+  traefik:
+    image: traefik
+    container_name: traefik
+    command: --web --docker --logLevel=INFO
+    networks:
+      - nyx
+    ports:
+      - '80:80'
+      - '5000:5000'
+      - '8080:8080' # Dashboard
+      - '443:443'
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    labels:
+      - "traefik.docker.network=nyx"
+      - "traefik.port=8080"
+
+networks:
+  nyx:
+    external: true
