@@ -8,7 +8,7 @@ import { InMemoryCache } from 'apollo-cache-inmemory'
 Vue.use(VueApollo)
 
 const link = createHttpLink({
-  uri: process.env.GRAPHQL_HTTP
+  uri: process.env.VUE_APP_GRAPHQL_HTTP
 })
 
 const cache = new InMemoryCache()
