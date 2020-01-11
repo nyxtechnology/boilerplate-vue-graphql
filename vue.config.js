@@ -4,6 +4,7 @@ const utilsEnv = require(path.resolve(__dirname, 'src/utils/environments'))
 module.exports = {
   lintOnSave: !utilsEnv.isProd(),
   publicPath: !utilsEnv.isDevelopment() ? '/dist/' : '/',
+
   devServer: {
     host: process.env.NODE_HOST || '0.0.0.0',
     port: process.env.NODE_PORT || '8000',
@@ -24,6 +25,7 @@ module.exports = {
       errors: true
     }
   },
+
   css: {
     sourceMap: true,
     loaderOptions: {
@@ -33,6 +35,7 @@ module.exports = {
       }
     }
   },
+
   configureWebpack: {
     devtool: 'source-map',
     resolve: {
@@ -46,6 +49,15 @@ module.exports = {
         '@layouts': path.resolve(__dirname, 'src/layouts'),
         '@components': path.resolve(__dirname, 'src/components')
       }
+    }
+  },
+
+  pluginOptions: {
+    i18n: {
+      locale: 'en',
+      fallbackLocale: 'en',
+      localeDir: 'locales',
+      enableInSFC: false
     }
   }
 }

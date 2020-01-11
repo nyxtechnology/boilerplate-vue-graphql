@@ -5,6 +5,7 @@ import store from '@/store'
 import apolloProvider from '@/apollo/apolloProvider'
 import './registerServiceWorker'
 import '@components/_globals'
+import i18n from './i18n'
 
 Vue.config.productionTip = false
 
@@ -12,6 +13,7 @@ const app = new Vue({
   store,
   router,
   apolloProvider,
+  i18n,
   render: h => h(App)
 }).$mount('#app')
 

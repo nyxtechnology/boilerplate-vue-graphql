@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Lista de deputados</h1>
+    <h1>{{ $t('title_home') }}</h1>
     <ul class="list">
       <li class="item" v-for="deputados in getDeputados" :key="deputados.node.id">
         <img class="avatar" :src="deputados.node.urlFoto" :alt="deputados.node.nome">
