@@ -17,8 +17,6 @@ import gql from 'graphql-tag'
 
 export default {
   name: 'home',
-  // Configure in .env VUE_APP_GRAPHQL_URL=https://graphql-camara-deputados.herokuapp.com/
-  // to example works
   apollo: {
     deputados: gql`query {
       deputados (first: 20) {

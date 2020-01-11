@@ -6,7 +6,7 @@ module.exports = {
   publicPath: !utilsEnv.isDevelopment() ? '/dist/' : '/',
   devServer: {
     host: process.env.NODE_HOST || '0.0.0.0',
-    port: process.env.NODE_PORT || '80',
+    port: process.env.NODE_PORT || '8000',
     public: process.env.TRAEFIK_FRONTEND_HOST,
     watchOptions: {
       ignored: [
