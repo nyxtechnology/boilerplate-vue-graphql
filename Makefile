@@ -31,6 +31,9 @@ e2e-open-test:
 unit-test:
 	docker-compose -f common-services.yml run --rm unit
 
+unit-watch:
+	docker-compose -f common-services.yml run --rm unit_watch
+
 unit-snap:
 	docker-compose -f common-services.yml run --rm unit_snap
 

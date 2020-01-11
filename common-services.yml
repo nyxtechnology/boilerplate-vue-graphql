@@ -7,8 +7,6 @@ services:
     volumes:
       - ./:/home/node/app
     command: npm i
-    networks:
-      - nyx
 
   build:
     image: wodby/node
@@ -16,8 +14,6 @@ services:
     volumes:
       - ./:/home/node/app
     command: npm run build
-    networks:
-      - nyx
 
   lint:
     image: wodby/node
@@ -25,8 +21,6 @@ services:
     volumes:
       - ./:/home/node/app
     command: npm run lint
-    networks:
-      - nyx
 
   e2e:
     image: wodby/node
@@ -34,8 +28,6 @@ services:
     volumes:
       - ./:/home/node/app
     command: npm run test:e2e
-    networks:
-      - nyx
 
   e2e_open:
     image: wodby/node
@@ -43,8 +35,6 @@ services:
     volumes:
       - ./:/home/node/app
     command: npm run test:e2e:open
-    networks:
-      - nyx
 
   unit:
     image: wodby/node
@@ -52,8 +42,13 @@ services:
     volumes:
       - ./:/home/node/app
     command: npm run test:unit
-    networks:
-      - nyx
+
+  unit_watch:
+    image: wodby/node
+    working_dir: /home/node/app
+    volumes:
+      - ./:/home/node/app
+    command: npm run test:unit:watch
 
   unit_snap:
     image: wodby/node
@@ -61,8 +56,6 @@ services:
     volumes:
       - ./:/home/node/app
     command: npm run test:unit:updt:snap
-    networks:
-      - nyx
 
   unit_single:
     image: wodby/node
@@ -70,8 +63,6 @@ services:
     volumes:
       - ./:/home/node/app
     command: npm run test:unit:single $FILE_MATCH
-    networks:
-      - nyx
 
 networks:
   nyx:

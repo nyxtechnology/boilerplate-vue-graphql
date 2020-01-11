@@ -1,4 +1,4 @@
-const path = require('path');
+const path = require('path')
 const utilsEnv = require(path.resolve(__dirname, 'src/utils/environments'))
 
 module.exports = {
@@ -46,6 +46,6 @@ module.exports = {
         '@layouts': path.resolve(__dirname, 'src/layouts'),
         '@components': path.resolve(__dirname, 'src/components')
       }
-    }    
+    }
   }
 }
