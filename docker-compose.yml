@@ -1,10 +1,12 @@
 version: "3"
 
 services:
-  site:
-    image: wodby/node:$NODE_TAG
-    container_name: site
+  front:
+    build: wodby/node:$NODE_TAG
+    container_name: front
     working_dir: /home/node/app
+    environment:
+      NODE_PORT: $NODE_PORT
     volumes:
       - ./:/home/node/app
     restart: unless-stopped
