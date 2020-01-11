@@ -1,6 +1,10 @@
 <template>
   <div>
-    <h1>{{ $t('title_home') }}</h1>
+    <h1>
+      <svg-icon name="bundle" title="budle" />
+      <span>{{ $t('title_home') }}</span>
+    </h1>
+
     <ul class="list">
       <li class="item" v-for="deputados in getDeputados" :key="deputados.node.id">
         <img class="avatar" :src="deputados.node.urlFoto" :alt="deputados.node.nome">
@@ -14,9 +18,13 @@
 
 <script>
 import gql from 'graphql-tag'
+import SvgIcon from '@components/SvgIcon'
 
 export default {
   name: 'home',
+  components: {
+    SvgIcon
+  },
   apollo: {
     deputados: gql`query {
       deputados (first: 20) {
