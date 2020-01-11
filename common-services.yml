@@ -2,63 +2,63 @@ version: "3"
 
 services:
   install:
-    image: mhart/alpine-node:10.15
+    image: wodby/node:$NODE_TAG
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app
     command: npm i
 
   build:
-    image: wodby/node
+    image: wodby/node:$NODE_TAG
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app
     command: npm run build
 
   lint:
-    image: wodby/node
+    image: wodby/node:$NODE_TAG
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app
     command: npm run lint
 
   e2e:
-    image: wodby/node
+    image: wodby/node:$NODE_TAG
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app
     command: npm run test:e2e
 
   e2e_open:
-    image: wodby/node
+    image: wodby/node:$NODE_TAG
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app
     command: npm run test:e2e:open
 
   unit:
-    image: wodby/node
+    image: wodby/node:$NODE_TAG
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app
     command: npm run test:unit
 
   unit_watch:
-    image: wodby/node
+    image: wodby/node:$NODE_TAG
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app
     command: npm run test:unit:watch
 
   unit_snap:
-    image: wodby/node
+    image: wodby/node:$NODE_TAG
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app
     command: npm run test:unit:updt:snap
 
   unit_single:
-    image: wodby/node
+    image: wodby/node:$NODE_TAG
     working_dir: /home/node/app
     volumes:
       - ./:/home/node/app

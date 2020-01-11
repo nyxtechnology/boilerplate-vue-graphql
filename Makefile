@@ -52,22 +52,4 @@ in:
 in-with-root:
 	docker-compose exec --user root front /bin/bash
 
-stage-run:
-	docker-compose -f docker-compose-stage.yml up -d
-
-stage-stop:
-	docker-compose -f docker-compose-stage.yml stop
-
-stage-deploy:
-	git pull origin stage && make stage-stop && make stage-run
-
-prod-run:
-	docker-compose -f docker-compose-prod.yml up -d
-
-prod-in:
-	docker-compose -f docker-compose-prod.yml exec --user root front /bin/bash
-
-prod-stop:
-	docker-compose -f docker-compose-prod.yml stop
-
 default: run
